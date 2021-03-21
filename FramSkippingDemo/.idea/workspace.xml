@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f6d59a6-f483-4276-ab56-96617354c7df" name="Default Changelist" comment="" />
+    <list default="true" id="4f6d59a6-f483-4276-ab56-96617354c7df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/GraduationProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/.idea/SuperResolutoin.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/Imports.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/TemporalAugmentation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SuperResolutoin/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +33,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1mL9rcr8945UEmMXeOOQCHUDPMR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
