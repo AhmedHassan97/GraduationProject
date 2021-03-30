@@ -40,15 +40,17 @@ TA = random.choice(TAList)
 print("TA=", TA)
 rgbframes = []
 allFrames = []
+
 for i in range(iteration):
+    print("here")
     rgbframes = GetFrames(path, TA, i * FramesPerIteration,
                           FramesPerIteration)  # take the filename, and the unit step)
+    print(len(rgbframes),"len(rgbframes)")
     for g in range(len(rgbframes)):
         allFrames.append(rgbframes[g])
-    convert_frames_to_video(rgbframes, realFps, g)
+    # convert_frames_to_video(rgbframes, realFps, g)
+    print(len(allFrames),"len(allFrames)")
 
-    print(len(rgbframes))
-    print("GetFrames Done")
 
 h = gkern(13, 1.6)  # 13 and 1.6 for x4
 # h = h[:, :, np.newaxis, np.newaxis].astype(np.float32)
