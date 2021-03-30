@@ -45,19 +45,18 @@ for i in range(iteration):
     print("here")
     rgbframes = GetFrames(path, TA, i * FramesPerIteration,
                           FramesPerIteration)  # take the filename, and the unit step)
-    print(len(rgbframes),"len(rgbframes)")
+    print(len(rgbframes), "len(rgbframes)")
     for g in range(len(rgbframes)):
         allFrames.append(rgbframes[g])
     # convert_frames_to_video(rgbframes, realFps, g)
-    print(len(allFrames),"len(allFrames)")
-
+    print(len(allFrames), "len(allFrames)")
 
 h = gkern(13, 1.6)  # 13 and 1.6 for x4
 # h = h[:, :, np.newaxis, np.newaxis].astype(np.float32)
 
 for i in range(len(allFrames) - 1):
-    mag_matrix=getMotionMatrix( allFrames[i],allFrames[i+1])
-    i_pixel,j_pixel=get144OfMostMotion(mag_matrix)
+    mag_matrix = getMotionMatrix(allFrames[i], allFrames[i + 1])
+    i_pixel, j_pixel = get144OfMostMotion(mag_matrix)
     AfterGaussian_0 = convolve2D(allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144, 0], h)
     AfterGaussian_1 = convolve2D(allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144, 1], h)
     AfterGaussian_2 = convolve2D(allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144, 2], h)

@@ -71,6 +71,8 @@ def getMotionMatrix(frame1, frame2):
 
 def get144OfMostMotion(mag_matrix):
     maxAverage = 0
+    i_pixel = 0
+    j_pixel = 0
     for k in range(mag_matrix.shape[0]):
         for j in range(mag_matrix.shape[1]):
             if k + 144 <= mag_matrix.shape[0] and j + 144 <= mag_matrix.shape[1]:
