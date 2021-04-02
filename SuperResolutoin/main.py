@@ -5,7 +5,7 @@ from utils import *
 
 start = time.time()
 # Some Initialization
-path = "COSTA RICA IN 4K 60fps HDR (ULTRA HD).mp4"
+path = "Marvel Studios Avengers- Endgame - Official Trailer.mp4"
 FramesPerIteration = 3000
 
 # get number of frames
@@ -35,7 +35,14 @@ except:
     shutil.rmtree("datasetFolder")
     os.makedirs("datasetFolder")
 
-TAList = [3, -3]
+try:
+    os.makedirs("groundTruth")
+except:
+    shutil.rmtree("groundTruth")
+    os.makedirs("groundTruth")
+
+
+TAList = [2, -2]
 TA = random.choice(TAList)
 print("TA=", TA)
 rgbframes = []
@@ -57,6 +64,7 @@ h = gkern(13, 1.6)  # 13 and 1.6 for x4
 for i in range(len(allFrames) - 1):
     mag_matrix = getMotionMatrix(allFrames[i], allFrames[i + 1])
     i_pixel, j_pixel = get144OfMostMotion(mag_matrix)
+
     AfterGaussian_0 = convolve2D(allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144, 0], h)
     AfterGaussian_1 = convolve2D(allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144, 1], h)
     AfterGaussian_2 = convolve2D(allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144, 2], h)
@@ -68,7 +76,8 @@ for i in range(len(allFrames) - 1):
     newimage[..., 2] = AfterGaussian_2
 
     newimage = quarter_res_avg(newimage)
-
+    cv2.imwrite("" + "groundTruth" + "/" + "outputImage" + "" + str(i + 1) + "" + ".jpg",
+                allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144,])
     cv2.imwrite("" + "datasetFolder" + "/" + "outputImage" + "" + str(i + 1) + "" + ".jpg",
                 newimage)
 
