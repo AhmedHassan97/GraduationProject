@@ -6,29 +6,53 @@ from CDM import *
 if __name__ == "__main__":
 
     start = time.time()
+    AfterrSkipping = 0
     # Some Initialization
-    path = "COSTA RICA IN 4K 60fps HDR (ULTRA HD).mp4"
-    FramesPerIteration = 3000
+    rightPath= False
+    while not rightPath:
+        path = input("Enter the path of the video (ex: Test.mp4), To Exit Enter 'e' : ")
+        if path == 'e':
+            exit()
+        if os.path.exists(path):
+            rightPath = True
+        else:
+            print("Please Enter a righ Path, To Exit Enter 'e' ")
+
+
 
     # get bitrate
     # bitrate = GetBitRate(path)
     props = get_video_properties("" + path + "")
     bitrate = props['bit_rate']
 
-    print(bitrate, "Bitrate")
+    # print(bitrate, "Bitrate")
     # get number of frames
     cap = cv2.VideoCapture(path)
     frameCount = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    print(frameCount, "Number of frames")
+    frameWidth = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    frameHeight = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+    FramesPerIteration = 0
+    if frameWidth * frameHeight <= 2073600:  # 1920 x 1080
+        FramesPerIteration = 3000
+    elif frameWidth * frameHeight <= 3686400:  # 2560 x 1440
+        FramesPerIteration = 2000
+    elif frameWidth * frameHeight <= 8294400:  # 3840 x 2160
+        FramesPerIteration = 1000
+    else:
+        FramesPerIteration = 500
+
+    print("Frames per Iteration:" , FramesPerIteration)
+    print("Total Number of frames of the video:", frameCount)
 
     # Get Video Duration
     video = VideoFileClip(path)
     video_duration = int(video.duration)
-    print(video_duration, "duration")
+    print("Video duration in seconds:", video_duration)
 
     # calculate real Fps
     realFps = frameCount / video_duration
-    print(realFps)
+    print("video FPS:", realFps)
 
     iteration = math.ceil(float(cap.get(cv2.CAP_PROP_FRAME_COUNT)) / FramesPerIteration)
     try:
@@ -40,11 +64,8 @@ if __name__ == "__main__":
     for i in range(iteration):
         rgbframes = GetFrames(path, 1, i * FramesPerIteration,
                               FramesPerIteration)  # take the filename, and the unit step
-        print(len(rgbframes))
-        print("GetFrames Done")
 
         firstCall = int(len(rgbframes) / 5)
-
         results1 = []
         results2 = []
         results3 = []
@@ -74,11 +95,14 @@ if __name__ == "__main__":
         rgbFrames_final.extend(results4)
         rgbFrames_final.extend(results5)
 
+        AfterrSkipping += len(rgbFrames_final)
         convert_frames_to_video(rgbFrames_final, realFps, i)
         end = time.time()
     p1 = Process(target=fun, args=(int(iteration), bitrate, path))
     p1.start()
     p1.join()
+
+    print("Number Of Frames After Skipping:", AfterrSkipping)
     # fun(int(iteration), bitrate, realFps)
     shutil.rmtree("tempFolder")
     os.remove("audio_from_video.mp3")

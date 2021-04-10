@@ -69,7 +69,7 @@ for i in range(len(allFrames) - 1):
     AfterGaussian_1 = convolve2D(allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144, 1], h)
     AfterGaussian_2 = convolve2D(allFrames[i][i_pixel:i_pixel + 144, j_pixel:j_pixel + 144, 2], h)
 
-    newimage = np.zeros((132, 132, 3), dtype="uint8")
+    newimage = np.zeros((144, 144, 3), dtype="uint8")
 
     newimage[..., 0] = AfterGaussian_0
     newimage[..., 1] = AfterGaussian_1
