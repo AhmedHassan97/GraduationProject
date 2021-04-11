@@ -105,7 +105,7 @@ def convert_frames_to_video(rgb_frames, realFps, counter):
 #     # convert_frames_to_video(rgbFrames_final, bitrate, realFps)
 
 
-def CDMForThreads(rgbFrames, rgbFrames_final):
+def CDMForThreads(rgbFrames, rgbFrames_final,FramesPerIteration,iteration,ThreadNumber):
     i = 1
     toBeDeleted = []
     while i < len(rgbFrames) - 1:
@@ -136,11 +136,14 @@ def CDMForThreads(rgbFrames, rgbFrames_final):
 
     print(len(rgbFrames), "before")
     # rgbFrames_final = []
-    for i in range(len(rgbFrames)):
-        if i in toBeDeleted:
-            continue
-        else:
-            rgbFrames_final.append(rgbFrames[i])
+
+    with open('Skipped_Frames.txt', 'a') as file:
+        for i in range(len(rgbFrames)):
+            if i in toBeDeleted:
+                # index = iteration * FramesPerIteration + j * ThreadNumber
+                file.write("%i\n" % (iteration * FramesPerIteration + len(rgbFrames) * ThreadNumber+ i))
+            else:
+                rgbFrames_final.append(rgbFrames[i])
     print(len(rgbFrames_final), "after")
     print("done")
     # convert_frames_to_video(rgbFrames_final, bitrate, realFps)

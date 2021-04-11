@@ -2,13 +2,12 @@ from FSM import *
 from imports import *
 from CDM import *
 
-
 if __name__ == "__main__":
 
     start = time.time()
     AfterrSkipping = 0
     # Some Initialization
-    rightPath= False
+    rightPath = False
     while not rightPath:
         path = input("Enter the path of the video (ex: Test.mp4), To Exit Enter 'e' : ")
         if path == 'e':
@@ -17,8 +16,6 @@ if __name__ == "__main__":
             rightPath = True
         else:
             print("Please Enter a righ Path, To Exit Enter 'e' ")
-
-
 
     # get bitrate
     # bitrate = GetBitRate(path)
@@ -42,7 +39,7 @@ if __name__ == "__main__":
     else:
         FramesPerIteration = 500
 
-    print("Frames per Iteration:" , FramesPerIteration)
+    print("Frames per Iteration:", FramesPerIteration)
     print("Total Number of frames of the video:", frameCount)
 
     # Get Video Duration
@@ -56,6 +53,10 @@ if __name__ == "__main__":
 
     iteration = math.ceil(float(cap.get(cv2.CAP_PROP_FRAME_COUNT)) / FramesPerIteration)
     try:
+        os.remove('Skipped_Frames.txt')
+    except:
+        print("")
+    try:
         os.makedirs("tempFolder")
     except:
         shutil.rmtree("tempFolder")
@@ -65,18 +66,22 @@ if __name__ == "__main__":
         rgbframes = GetFrames(path, 1, i * FramesPerIteration,
                               FramesPerIteration)  # take the filename, and the unit step
 
-        firstCall = int(len(rgbframes) / 5)
+        firstCall = (len(rgbframes) / 5)
         results1 = []
         results2 = []
         results3 = []
         results4 = []
         results5 = []
 
-        t1 = threading.Thread(target=CDMForThreads, args=(rgbframes[0:firstCall], results1,))
-        t2 = threading.Thread(target=CDMForThreads, args=(rgbframes[firstCall:2 * firstCall], results2,))
-        t3 = threading.Thread(target=CDMForThreads, args=(rgbframes[2 * firstCall:3 * firstCall], results3,))
-        t4 = threading.Thread(target=CDMForThreads, args=(rgbframes[3 * firstCall:4 * firstCall], results4,))
-        t5 = threading.Thread(target=CDMForThreads, args=(rgbframes[4 * firstCall:5 * firstCall], results5,))
+        t1 = threading.Thread(target=CDMForThreads, args=(rgbframes[0:int(firstCall)], results1, FramesPerIteration, i, 1))
+        t2 = threading.Thread(target=CDMForThreads,
+                              args=(rgbframes[int(firstCall):int(2 * firstCall)],  results2,FramesPerIteration, i, 2))
+        t3 = threading.Thread(target=CDMForThreads,
+                              args=(rgbframes[int(2 * firstCall):int(3 * firstCall)],  results3,FramesPerIteration, i, 3))
+        t4 = threading.Thread(target=CDMForThreads,
+                              args=(rgbframes[int(3 * firstCall):int(4 * firstCall)],  results4,FramesPerIteration, i, 4))
+        t5 = threading.Thread(target=CDMForThreads,
+                              args=(rgbframes[int(4 * firstCall):int(5 * firstCall)], results5,FramesPerIteration, i, 5))
         t1.start()
         t2.start()
         t3.start()
