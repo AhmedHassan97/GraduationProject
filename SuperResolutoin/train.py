@@ -12,12 +12,21 @@ T_in = 7
 R = 4
 #get the data set
 
-X_dataset = get_x()
-Y_dataset = get_y()
+# X_dataset = get_x()
+# Y_dataset = get_y()
+
+X_dataset = GetVideo(0, False)
+Y_dataset = GetVideo(0, True)
+
+print(Y_dataset.shape, "Shape of y ")
+
 
 y_true = []
 for i in range(len(Y_dataset)):
-    y_true.append(Y_dataset[i][np.newaxis, np.newaxis, :, :, :])  # print(yy[1].shape) (1, 1, 400, 460, 3)
+    YtrueList = []
+    for j in range(7):
+        YtrueList.append(Y_dataset[i][j][np.newaxis, np.newaxis, :, :, :])  # print(yy[1].shape) (1, 1, 400, 460, 3)
+    y_true.append(YtrueList)
 y_true = np.asarray(y_true)
 Y_dataset = y_true
 
@@ -127,18 +136,19 @@ with tf.compat.v1.Session(config=config) as sess:
         print("-------------------------- Epoch {:3d} ----------------------------".format(global_step))
         for i in range(5):
             print("---------- optimize sess.run start ----------")
-            for j in range(X_dataset.shape[0]-7):
-                in_L = X_dataset[j:j + T_in]  # select T_in frames
+            for j in range(X_dataset.shape[0]):
+                in_L = X_dataset[j]  # select T_in frames
                 in_L = in_L[np.newaxis, :, :, :, :]
-                print(in_L.shape,"in_L.shape")
-                print(Y_dataset.shape, "Y_dataset.shape")
-                sess.run(optimizer, feed_dict={H_out_true: Y_dataset[j], L: in_L, is_train: True})
+                print(Y_dataset[j].shape, "asdasdasdads")
+
+                sess.run(optimizer, feed_dict={H_out_true: Y_dataset[j][3], L: in_L, is_train: True})
                 print("optimize:" + str(i) + " " + str(j) + " finished.")
         print("---------- train cost sess.run start -----------")
-        for j in range(X_dataset.shape[0]-7):
-            in_L = X_dataset[j:j + T_in]  # select T_in frames
+        for j in range(X_dataset.shape[0]):
+            in_L = X_dataset[j]  # select T_in frames
             in_L = in_L[np.newaxis, :, :, :, :]
-            train_loss = sess.run(cost, feed_dict={H_out_true: Y_dataset[j], L: in_L, is_train: True})
+            print(Y_dataset[j].shape,"asdasdasdads")
+            train_loss = sess.run(cost, feed_dict={H_out_true: Y_dataset[j][3], L: in_L, is_train: True})
             total_train_loss = total_train_loss + train_loss
             # print('this single train cost: {:.7f}'.format(train_loss))
             print("train cost :" + str(i) + " " + str(j) + " finished.")
@@ -149,13 +159,12 @@ with tf.compat.v1.Session(config=config) as sess:
         #     total_valid_loss = total_valid_loss + valid_loss
         #     # print('this single valid cost: {:.7f}'.format(valid_loss))
         #     print("valid cost :" + str(i) + " " + str(j) + " finished.")
-        avg_train_loss = total_train_loss / X_dataset.shape[0]
+        # avg_train_loss = total_train_loss / X_dataset.shape[0]
         # avg_valid_loss = total_valid_loss / x_valid_data.shape[0]
         print("Epoch - {:2d}, avg loss on train set: {:.7f}, avg loss on valid set: {:.7f}.".format(global_step,
-                                                                                                    avg_train_loss,
+                                                                                                    123,
                                                                                                     123))
                                                                                                     # avg_valid_loss))
-
         if global_step == 0:
             with open('./logs/pb_graph_log.txt', 'w') as f:
                 f.write(str(sess.graph_def))

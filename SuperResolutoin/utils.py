@@ -1,6 +1,7 @@
 from Imports import *
 
-
+HighQualityPath = 'D:\semestre9\gp\Dataset_HighQuality'
+LowQualityPath= 'D:\semestre9\gp\Dataset_LowQuality'
 def convolve2D(image, kernel, padding=6, strides=1):
     # Cross Correlation
     kernel = np.flipud(np.fliplr(kernel))
@@ -278,3 +279,27 @@ def freeze_graph(check_point_folder, model_folder, pb_name):
         with tf.compat.v1.gfile.GFile(output_graph, "wb") as f:
             f.write(output_graph_def.SerializeToString())
         print("%d ops in the final graph." % len(output_graph_def.node))
+
+def GetVideo(VideoNumber,quality):
+    if quality:
+        path= HighQualityPath
+    else:
+        path=LowQualityPath
+
+    files = os.listdir(path)
+    files.sort()
+
+    Video=os.listdir(path + '\\' + files[VideoNumber])
+    print(Video)
+    VideoList=[]
+    for i in range(len(Video)):
+        imagesList = []
+        listOfSeven = os.listdir(path + '\\' + files[VideoNumber] + '\\' + Video[i])
+        for j in range(7):
+            image=cv2.imread(path + '\\' + files[VideoNumber] + '\\' + Video[i]+'\\' + listOfSeven[j])
+            imagesList.append(image)
+        VideoList.append(imagesList)
+
+    # print(np.asarray(VideoList)[0][3])
+    return np.asarray(VideoList)
+
