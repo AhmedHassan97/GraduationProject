@@ -3,22 +3,22 @@ from utils import *
 from DownSampling import *
 
 
-StartFrom=0
-path = 'D:\semestre9\gp\Dataset'
+StartFrom=10
+path = 'F:\\vimeo_septuplet\\vimeo_septuplet\sequences'
 try:
-    os.makedirs("D:\semestre9\gp\Dataset_LowQuality")
+    os.makedirs("F:\\Dataset_LowQuality")
 except:
-    shutil.rmtree("D:\semestre9\gp\Dataset_LowQuality")
-    os.makedirs("D:\semestre9\gp\Dataset_LowQuality")
+    shutil.rmtree("F:\\Dataset_LowQuality")
+    os.makedirs("F:\\Dataset_LowQuality")
 
 try:
-    os.makedirs("D:\semestre9\gp\Dataset_HighQuality")
+    os.makedirs("F:\\Dataset_HighQuality")
 except:
-    shutil.rmtree("D:\semestre9\gp\Dataset_HighQuality")
-    os.makedirs("D:\semestre9\gp\Dataset_HighQuality")
+    shutil.rmtree("F:\\Dataset_HighQuality")
+    os.makedirs("F:\\Dataset_HighQuality")
 
-PathOfLowQuality = 'D:\semestre9\gp\Dataset_LowQuality'
-PathOfHighQuality = 'D:\semestre9\gp\Dataset_HighQuality'
+PathOfLowQuality = 'F:\\Dataset_LowQuality'
+PathOfHighQuality = 'F:\\Dataset_HighQuality'
 
 h = gkern(13, 1.6)  # 13 and 1.6 for x4
 

@@ -1,7 +1,7 @@
 from Imports import *
 
-HighQualityPath = 'D:\semestre9\gp\Dataset_HighQuality'
-LowQualityPath= 'D:\semestre9\gp\Dataset_LowQuality'
+HighQualityPath = 'F:\\Dataset_HighQuality'
+LowQualityPath= 'F:\\Dataset_LowQuality'
 def convolve2D(image, kernel, padding=6, strides=1):
     # Cross Correlation
     kernel = np.flipud(np.fliplr(kernel))
@@ -119,7 +119,7 @@ def LoadImage(path, color_mode='RGB', channel_mean=None, modcrop=[0, 0, 0, 0]):
 
 def get_x():
     T_in = 7
-    path = 'datasetFolder/'
+    path = 'F:\\Dataset_LowQuality'
     dir_frames = glob.glob(path + "*.jpg")
     dir_frames.sort()
     frames = []
@@ -131,7 +131,7 @@ def get_x():
 
 
 def get_y():
-    path = 'groundTruth/'
+    path = 'F:\\Dataset_HighQuality'
     dir_frames = glob.glob(path + "*.jpg")
     dir_frames.sort()
     frames = []
