@@ -49646,6 +49646,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_12/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -49666,7 +49688,7 @@ node {
   name: "gradients/batchnorm_12/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_12/add_grad/Sum"
-  input: "gradients/batchnorm_12/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_12/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -52440,6 +52462,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_11/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -52460,7 +52504,7 @@ node {
   name: "gradients/batchnorm_11/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_11/add_grad/Sum"
-  input: "gradients/batchnorm_11/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_11/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -54678,6 +54722,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_10/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -54698,7 +54764,7 @@ node {
   name: "gradients/batchnorm_10/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_10/add_grad/Sum"
-  input: "gradients/batchnorm_10/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_10/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -57473,6 +57539,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_9/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -57493,7 +57581,7 @@ node {
   name: "gradients/batchnorm_9/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_9/add_grad/Sum"
-  input: "gradients/batchnorm_9/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_9/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -59711,6 +59799,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_8/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -59731,7 +59841,7 @@ node {
   name: "gradients/batchnorm_8/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_8/add_grad/Sum"
-  input: "gradients/batchnorm_8/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_8/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -62506,6 +62616,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_7/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -62526,7 +62658,7 @@ node {
   name: "gradients/batchnorm_7/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_7/add_grad/Sum"
-  input: "gradients/batchnorm_7/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_7/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -64744,6 +64876,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_6/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -64764,7 +64918,7 @@ node {
   name: "gradients/batchnorm_6/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_6/add_grad/Sum"
-  input: "gradients/batchnorm_6/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_6/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -67399,6 +67553,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_5/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -67419,7 +67595,7 @@ node {
   name: "gradients/batchnorm_5/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_5/add_grad/Sum"
-  input: "gradients/batchnorm_5/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_5/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -69637,6 +69813,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_4/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -69657,7 +69855,7 @@ node {
   name: "gradients/batchnorm_4/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_4/add_grad/Sum"
-  input: "gradients/batchnorm_4/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_4/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -72292,6 +72490,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_3/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -72312,7 +72532,7 @@ node {
   name: "gradients/batchnorm_3/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_3/add_grad/Sum"
-  input: "gradients/batchnorm_3/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_3/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -74530,6 +74750,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_2/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -74550,7 +74792,7 @@ node {
   name: "gradients/batchnorm_2/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_2/add_grad/Sum"
-  input: "gradients/batchnorm_2/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_2/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -77185,6 +77427,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_1/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -77205,7 +77469,7 @@ node {
   name: "gradients/batchnorm_1/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm_1/add_grad/Sum"
-  input: "gradients/batchnorm_1/add_grad/Reshape/shape"
+  input: "gradients/batchnorm_1/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -79423,6 +79687,28 @@ node {
   attr {
     key: "dtype"
     value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm/add_grad/Reshape/shape_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
       type: DT_INT32
     }
   }
@@ -79443,7 +79729,7 @@ node {
   name: "gradients/batchnorm/add_grad/Reshape"
   op: "Reshape"
   input: "gradients/batchnorm/add_grad/Sum"
-  input: "gradients/batchnorm/add_grad/Reshape/shape"
+  input: "gradients/batchnorm/add_grad/Reshape/shape_1"
   attr {
     key: "T"
     value {
@@ -162511,7 +162797,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_12/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_12/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_12/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -162536,7 +162844,7 @@ node {
   name: "gradients/batchnorm_12/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_12/add_grad/Sum_1"
-  input: "gradients/batchnorm_12/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_12/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -165305,7 +165613,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_11/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_11/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_11/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -165330,7 +165660,7 @@ node {
   name: "gradients/batchnorm_11/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_11/add_grad/Sum_1"
-  input: "gradients/batchnorm_11/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_11/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -167543,7 +167873,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_10/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_10/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_10/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -167568,7 +167920,7 @@ node {
   name: "gradients/batchnorm_10/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_10/add_grad/Sum_1"
-  input: "gradients/batchnorm_10/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_10/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -170338,7 +170690,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_9/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_9/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_9/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -170363,7 +170737,7 @@ node {
   name: "gradients/batchnorm_9/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_9/add_grad/Sum_1"
-  input: "gradients/batchnorm_9/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_9/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -172576,7 +172950,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_8/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_8/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_8/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -172601,7 +172997,7 @@ node {
   name: "gradients/batchnorm_8/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_8/add_grad/Sum_1"
-  input: "gradients/batchnorm_8/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_8/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -175371,7 +175767,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_7/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_7/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_7/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -175396,7 +175814,7 @@ node {
   name: "gradients/batchnorm_7/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_7/add_grad/Sum_1"
-  input: "gradients/batchnorm_7/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_7/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -177609,7 +178027,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_6/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_6/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_6/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -177634,7 +178074,7 @@ node {
   name: "gradients/batchnorm_6/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_6/add_grad/Sum_1"
-  input: "gradients/batchnorm_6/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_6/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -180264,7 +180704,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_5/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_5/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_5/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -180289,7 +180751,7 @@ node {
   name: "gradients/batchnorm_5/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_5/add_grad/Sum_1"
-  input: "gradients/batchnorm_5/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_5/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -182502,7 +182964,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_4/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_4/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_4/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -182527,7 +183011,7 @@ node {
   name: "gradients/batchnorm_4/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_4/add_grad/Sum_1"
-  input: "gradients/batchnorm_4/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_4/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -185157,7 +185641,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_3/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_3/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_3/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -185182,7 +185688,7 @@ node {
   name: "gradients/batchnorm_3/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_3/add_grad/Sum_1"
-  input: "gradients/batchnorm_3/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_3/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -187395,7 +187901,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_2/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_2/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_2/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -187420,7 +187948,7 @@ node {
   name: "gradients/batchnorm_2/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_2/add_grad/Sum_1"
-  input: "gradients/batchnorm_2/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_2/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -190050,7 +190578,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm_1/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm_1/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm_1/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -190075,7 +190625,7 @@ node {
   name: "gradients/batchnorm_1/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm_1/add_grad/Sum_1"
-  input: "gradients/batchnorm_1/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm_1/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -192288,7 +192838,29 @@ node {
   }
 }
 node {
-  name: "gradients/batchnorm/add_grad/Reshape/shape_1"
+  name: "gradients/batchnorm/add_grad/Reshape/shape_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+          }
+        }
+      }
+    }
+  }
+}
+node {
+  name: "gradients/batchnorm/add_grad/Reshape/shape_1_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -192313,7 +192885,7 @@ node {
   name: "gradients/batchnorm/add_grad/Reshape_1"
   op: "Reshape"
   input: "gradients/batchnorm/add_grad/Sum_1"
-  input: "gradients/batchnorm/add_grad/Reshape/shape_1"
+  input: "gradients/batchnorm/add_grad/Reshape/shape_1_1"
   attr {
     key: "T"
     value {
@@ -225736,5 +226308,5 @@ node {
   input: "^rconv2/b/Assign_1"
 }
 versions {
-  producer: 440
+  producer: 561
 }

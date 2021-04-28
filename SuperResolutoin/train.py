@@ -144,8 +144,8 @@ with tf.compat.v1.Session(config=config) as sess:
                     sess.run(optimizer, feed_dict={H_out_true: Y_dataset[j][3], L: in_L, is_train: True})
                     print("optimize:" + str(i) + " " + str(j) + " finished.")
             print("---------- train cost sess.run start -----------")
-            for j in range(X_dataset[TrainingLoop].shape[0]):
-                in_L = X_dataset[TrainingLoop][j]  # select T_in frames
+            for j in range(X_dataset.shape[0]):
+                in_L = X_dataset[j]  # select T_in frames
                 in_L = in_L[np.newaxis, :, :, :, :]
                 print(Y_dataset.shape,"asdasdasdads")
                 train_loss = sess.run(cost, feed_dict={H_out_true: Y_dataset[j][3], L: in_L, is_train: True})
