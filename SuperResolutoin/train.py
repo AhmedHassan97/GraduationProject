@@ -1,7 +1,7 @@
 from Imports import *
 from utils import *
 
-
+#Needed For The Migration
 tf.compat.v1.disable_eager_execution()
 tf.compat.v1.disable_v2_behavior()
 
@@ -22,6 +22,7 @@ print(Y_dataset.shape, "Shape of y ")
 
 
 y_true = []
+#Make the Ground truth 5d instead of 3d
 for i in range(len(Y_dataset)):
     YtrueList = []
     for j in range(7):
