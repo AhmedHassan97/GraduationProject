@@ -1,5 +1,6 @@
 from Imports import *
 from utils import create_model, LoadDataSet
+from itertools import chain
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
@@ -25,16 +26,26 @@ model.compile(optimizer=AdamOp, loss=tf.keras.losses.Huber(delta=0.001), metrics
 # model.load_weights(checkpoint_filepath)
 
 
-for epoch in range(0,100):
+for epoch in range(0, 100):
     print("here1")
     for video in range(9):
         print("here2")
         X_TRAIN = []
         Y_TRAIN = []
         x_train_All, y_train_All = LoadDataSet(video)
-        for every7 in range(len(x_train_All)):
-            x_train = x_train_All[every7]
-            y_train = y_train_All[every7][0]
+
+        x_train_All = list(chain.from_iterable(x_train_All))
+        y_train_All = list(chain.from_iterable(y_train_All))
+
+        # for j in range(len())
+        # for every7 in range(len(x_train_All)):
+        #     x_train = x_train_All[every7]
+        #     y_train = y_train_All[every7][0]
+        #     x_train = x_train[np.newaxis, :, :, :, :]
+        print(len(x_train_All))
+        for j in range(len(x_train_All)-6):
+            x_train = np.array(x_train_All[j:j+7])
+            y_train = y_train_All[j]
             x_train = x_train[np.newaxis, :, :, :, :]
             model.fit(x_train, y_train, epochs=epoch+1, initial_epoch=epoch)
     model.save('My Model' + str(epoch))

@@ -1,6 +1,87 @@
 from Imports import *
 
 
+def convolve2D(image, kernel, padding=6, strides=1):
+    # Cross Correlation
+    kernel = np.flipud(np.fliplr(kernel))
+
+    # Gather Shapes of Kernel + Image + Padding
+    xKernShape = kernel.shape[0]
+    yKernShape = kernel.shape[1]
+    xImgShape = image.shape[0]
+    yImgShape = image.shape[1]
+
+    # Shape of Output Convolution
+    xOutput = int(((xImgShape - xKernShape + 2 * padding) / strides) + 1)
+    yOutput = int(((yImgShape - yKernShape + 2 * padding) / strides) + 1)
+    output = np.zeros((xOutput, yOutput))
+
+    # Apply Equal Padding to All Sides
+    if padding != 0:
+        imagePadded = np.zeros((image.shape[0] + padding * 2, image.shape[1] + padding * 2))
+        imagePadded[int(padding):int(-1 * padding), int(padding):int(-1 * padding)] = image
+    else:
+        imagePadded = image
+
+    # Iterate through image
+    for y in range(image.shape[1]):
+        # Exit Convolution
+        if y > image.shape[1] - yKernShape:
+            break
+        # Only Convolve if y has gone down by the specified Strides
+        if y % strides == 0:
+            for x in range(image.shape[0]):
+                # Go to next row once kernel is out of bounds
+                if x > image.shape[0] - xKernShape:
+                    break
+                try:
+                    # Only Convolve if x has moved by the specified Strides
+                    if x % strides == 0:
+                        output[x, y] = (kernel * imagePadded[x: x + xKernShape, y: y + yKernShape]).sum()
+                except:
+                    break
+    return output
+
+
+def gkern(kernlen=13, nsig=1.6):
+    # create nxn zeros
+    inp = np.zeros((kernlen, kernlen))
+    # set element at the middle to one, a dirac delta
+    inp[kernlen // 2, kernlen // 2] = 1
+    # gaussian-smooth the dirac, resulting in a gaussian filter mask
+    return fi.gaussian_filter(inp, nsig)
+
+
+def getMotionMatrix(frame1, frame2):
+    frame1_Gray = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
+    frame2_Gray = cv2.cvtColor(frame2, cv2.COLOR_BGR2GRAY)
+
+    flow = cv2.calcOpticalFlowFarneback(frame1_Gray, frame2_Gray, None, 0.5, 3, 15, 3, 5, 1.2, 0)
+
+    # mag, ang = cv2.cartToPolar(flow[...,0], flow[...,1])
+    sqFlow1 = np.square(flow[..., 0])
+    sqFlow2 = np.square(flow[..., 1])
+    sumFlow = sqFlow1 + sqFlow2
+    mag_matrix = np.sqrt(sumFlow)
+    return mag_matrix
+
+
+def get144OfMostMotion(mag_matrix):
+    maxAverage = 0
+    i_pixel = 0
+    j_pixel = 0
+    for k in range(mag_matrix.shape[0]):
+        for j in range(mag_matrix.shape[1]):
+            if k + 144 <= mag_matrix.shape[0] and j + 144 <= mag_matrix.shape[1]:
+                avg = np.mean(mag_matrix[k:k + 144, j:j + 144])
+                if avg > maxAverage:
+                    maxAverage = avg
+                    i_pixel = k
+                    j_pixel = j
+
+    return i_pixel, j_pixel
+
+
 def depth_to_space_3D(x, block_size):
     ds_x = tf.shape(x)
     x = tf.reshape(x, [ds_x[0] * ds_x[1], ds_x[2], ds_x[3], ds_x[4]])
@@ -83,9 +164,9 @@ def create_model():
     initial_conv = Conv3D(64, (1, 3, 3))(padInput)
     conv_blk = initial_conv
     F = 64
-    G = 32
+    G = 16
     # First section
-    for _ in range(3):
+    for _ in range(21):
         conv_blk = bn_block(conv_blk, F, G, stp)
         F += G
 
@@ -213,3 +294,105 @@ def LoadDataSet(VideoNumber):
     y_true = np.asarray(y_true)
     Y_dataset = y_true
     return X_dataset, Y_dataset
+
+
+def GetFrames(fileName, StartCount, FramesPerIteration, color_mode='RGB', channel_mean=None, modcrop=[0, 0, 0, 0]):
+    cap = cv2.VideoCapture(fileName)
+    cap.set(1, int(StartCount))
+
+    frameCount = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    frameWidth = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    frameHeight = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+    bufsize = 0
+    if frameCount - StartCount > FramesPerIteration:
+        bufsize = FramesPerIteration
+    else:
+        bufsize = frameCount - StartCount
+    buf = np.empty((bufsize, frameHeight, frameWidth, 3), np.dtype('uint8'))
+
+    fc = 0
+    ret = True
+
+    while fc < bufsize and ret:
+        ret, buf[fc] = cap.read()
+        fc += 1
+
+    cap.release()
+
+    SelectedFrames = []
+
+    count = 0
+
+    print(len(buf), "debug2")
+    for i in range(len(buf)):
+        img = buf[i]
+        if color_mode == 'RGB':
+            cimg = Image.fromarray(img).convert('RGB')
+            x = np.asarray(cimg, dtype='float32')
+
+        elif color_mode == 'YCbCr' or color_mode == 'Y':
+            cimg = img.convert('YCbCr')
+            x = np.asarray(cimg, dtype='float32')
+            if color_mode == 'Y':
+                x = x[:, :, 0:1]
+
+            ## To 0-1
+        x *= 1.0 / 255.0
+
+        if channel_mean:
+            x[:, :, 0] -= channel_mean[0]
+            x[:, :, 1] -= channel_mean[1]
+            x[:, :, 2] -= channel_mean[2]
+
+        if modcrop[0] * modcrop[1] * modcrop[2] * modcrop[3]:
+            x = x[modcrop[0]:-modcrop[1], modcrop[2]:-modcrop[3], :]
+
+        SelectedFrames.append(x)
+
+    return np.array(SelectedFrames)
+    # if unitstep == 1:
+    #     return buf
+    # else:
+    #     for i in range(0, buf.shape[0], unitstep):
+    #         SelectedFrames.append(buf[i])
+    #         # io.imshow(SelectedFrames[count])
+    #         # io.show()
+    #         # count += 1
+    #     # # cv2.waitKey(0)
+    #     # print(buf.shape)
+    #     return SelectedFrames
+
+
+def convert_frames_to_video(rgb_frames, realFps, counter):
+    NumberOfFrames = len(rgb_frames)
+    print(NumberOfFrames, "Number of frames")
+    # f = sf.SoundFile('audio_from_video.wav')
+    # inSeconds = (len(f) / f.samplerate)
+    # fps = float(NumberOfFrames) / inSeconds
+    # realFps = realFps.split("/")
+    # realFps = float(realFps[0]) / float(realFps[1])
+
+    height, width, layers = rgb_frames[0].shape
+    # out = cv2.VideoWriter('project1.mp4', cv2.VideoWriter_fourcc(*'mp4v'), realFps, (width, height))
+
+    out = cv2.VideoWriter("" + "tempFolder" + "/" + "outputVideo" + "" + str(counter) + "" + ".mp4",
+                          cv2.VideoWriter_fourcc(*'mp4v'), realFps,
+                          (width, height))
+    for i in range(len(rgb_frames)):
+        out.write(rgb_frames[i])
+    out.release()
+
+
+def fun(loopCounter, bitrate, path):
+    video = VideoFileClip(path)  # 2.
+    audio = video.audio  # 3.
+    audio.write_audiofile("audio_from_video.mp3")  # 4.
+    clipList = []
+    for i in range(loopCounter):
+        clipList.append(VideoFileClip(r"" + 'tempFolder' + "/" + "outputVideo" + "" + str(i) + "" + ".mp4"))
+    video3 = concatenate_videoclips([clipList[i] for i in range(
+        loopCounter)])  # keeps these files open until process ends. Therefore, a new process is created just for this
+
+    video3.write_videofile(r"" + "finaOutputVideo.mp4" + "", audio="" + "audio_from_video.mp3" + "",
+                           bitrate=(str(int(bitrate) - (0.05 * int(bitrate)))))

@@ -61,6 +61,7 @@ def convert_frames_to_video(rgb_frames, realFps, counter):
     for i in range(len(rgb_frames)):
         out.write(rgb_frames[i])
     out.release()
+
     # video3 = VideoFileClip(r"" + "project1.mp4" + "")
     # video3.write_videofile(r"" + "project.mp4" + "", audio="" + "audio_from_video.mp3" + "",
     #                        bitrate=(str(int(bitrate) - (0.05 * int(bitrate)))))
@@ -141,7 +142,8 @@ def CDMForThreads(rgbFrames, rgbFrames_final,FramesPerIteration,iteration,Thread
         for i in range(len(rgbFrames)):
             if i in toBeDeleted:
                 # index = iteration * FramesPerIteration + j * ThreadNumber
-                file.write("%i\n" % (iteration * FramesPerIteration + len(rgbFrames) * ThreadNumber+ i))
+                file.write("%i\n" % (iteration * FramesPerIteration + len(rgbFrames) * (ThreadNumber-1) + i))
+
             else:
                 rgbFrames_final.append(rgbFrames[i])
     print(len(rgbFrames_final), "after")
